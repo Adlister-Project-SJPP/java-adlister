@@ -16,7 +16,15 @@ function validateRegister(){
     let c = document.forms["register"]["confirm_password"].value;
     if(u == ""){
         alert("You must enter a username")
+        return false;
     }if(p == ""){
         alert("You must enter a password")
+        return false;
+    }if(e == ""){
+        alert("Please enter your email address")
+        return false;
+    }if(c != p){
+        alert("Please reenter your password correctly!")
+        return false;
     }
 }
