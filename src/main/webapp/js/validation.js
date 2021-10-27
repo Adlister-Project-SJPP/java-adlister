@@ -17,14 +17,25 @@ function validateRegister(){
     if(u == ""){
         alert("You must enter a username")
         return false;
-    }if(p == ""){
-        alert("You must enter a password")
-        return false;
     }if(e == ""){
         alert("Please enter your email address")
         return false;
+    }if(p == ""){
+        alert("You must enter a password")
+        return false;
     }if(c != p){
         alert("Please reenter your password correctly!")
+        return false;
+    }
+}
+function validateCreate(){
+    let t = document.forms["create"]["title"].value;
+    let d = document.forms["create"]["description"].value;
+    if(t == ""){
+        alert("Please fill out your title")
+        return false;
+    }if(d == ""){
+        alert("Please describe your ad")
         return false;
     }
 }

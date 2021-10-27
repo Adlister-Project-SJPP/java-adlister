@@ -8,6 +8,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
     <div class="container">
         <h1>Please Log In</h1>
         <form name="login" action="/login" method="POST" onsubmit="return validateLogin()">
