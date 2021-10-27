@@ -13,12 +13,19 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
+    private int counter = 0; // added this counter variable outside of the doGet method
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
         }
+        // line 23-26
+        counter += 1;
+        if (counter > 1) {
+            request.setAttribute("failedAttempt", true);
+        }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+//        request.setAttribute("failedAttempt", true); // the failedAttempt did not display when we placed this code
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         boolean validAttempt = Password.check(password, user.getPassword());
-        System.out.println(validAttempt); // amanda
+
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
