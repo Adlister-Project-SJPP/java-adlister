@@ -14,12 +14,10 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
-            return;
+        if (request.getSession().getAttribute("user") != null) {
+            request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
+            request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-            .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

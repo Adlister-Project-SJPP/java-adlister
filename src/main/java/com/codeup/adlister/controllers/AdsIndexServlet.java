@@ -18,8 +18,7 @@ public class AdsIndexServlet extends HttpServlet {
             request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
             request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
         }
-        response.sendRedirect("/login");
-//        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
     }
 }

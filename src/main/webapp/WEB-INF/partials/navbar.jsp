@@ -9,11 +9,13 @@
         <ul class="nav navbar-nav navbar-right">
             <c:choose>
                 <c:when test="${isLogin}"><!--This is the equivalent to a (if()) in an (if() else). (test="S{isLogin}") determines if profile and logout will appear in the navbar this will only happened if isLogin is true -->
+                    <li><a href="/ads/create">Create</a></li>
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </c:when>
                 <c:otherwise><!-- This is the equivalent to a (else) in a (if() else). This only show up if isLogin is false-->
                     <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
                 </c:otherwise>
             </c:choose>
 
