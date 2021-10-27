@@ -15,7 +15,7 @@ public class AdsIndexServlet extends HttpServlet {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
 
         if (request.getSession().getAttribute("user") != null) {
-            request.setAttribute("isLogin", true);
+            request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
             request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
         }
         response.sendRedirect("/login");
