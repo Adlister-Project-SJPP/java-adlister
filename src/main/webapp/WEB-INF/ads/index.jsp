@@ -15,20 +15,12 @@
 
     <c:forEach var="ad" items="${ads}">
         <div id="ad-title" class="col-md-6">
-            <a href="/viewAd.jsp"><h2 id="adTitle">${ad.title}</h2></a>
+            <a href="/ads/viewAd"> <h2>${ad.title}</h2></a>
             <p>${ad.description}</p>
         </div>
     </c:forEach>
 
-    <form action="index.jsp">
-        <input type="text" name="adTitle">
-        <input type="submit" value="View">
-    </form>
 
-    <% String name = request.getParameter("adTitle");
-    out.print("Welcome", name);
-    session.setAttribute("user", name);
-    <a href=
 
 </div>
 

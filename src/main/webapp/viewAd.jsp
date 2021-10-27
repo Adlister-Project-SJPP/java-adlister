@@ -3,7 +3,7 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Viewing All The Ads" />
+        <jsp:param name="title" value="Viewing Individual Ad" />
     </jsp:include>
 </head>
 <body>
@@ -12,12 +12,14 @@
 <div class="container">
 
         <div class="col-md-12">
-            <h1>${ad.title}</h1>
+            <h1>${singleAd.title}</h1>
         </div>
 
         <div class="col-md-6">
-            <p>${ad.description}</p>
+            <p>${singleAd.description}</p>
         </div>
+    
+
 
 </div>
 
