@@ -31,3 +31,4 @@ CREATE TABLE ads(
 #     ads_id INT UNSIGNED,
 #     FOREIGN KEY (ads_id) REFERENCES ads(id)
 # );
+
