@@ -14,16 +14,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        if (request.getSession().getAttribute("user") != null) {
-            request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
-            request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
-        }
+            request.setAttribute("ads", DaoFactory.getAdsDao().all());
+            if (request.getSession().getAttribute("user") != null) {
+                request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
+                request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+            }
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
     }
@@ -33,11 +34,9 @@ public class AdsIndexServlet extends HttpServlet {
 
         super.doPost(req, resp);
         String search = req.getParameter("searchTitle");
-        if(search != ""){
-            req.setAttribute("ads", DaoFactory.getAdsDao());
+        if(search != null){
+            req.setAttribute("ads", DaoFactory.getAdsDao().searchAd(search));
         }
-        ResultSet rs = Statement.executeQuery("SELECT title FROM ads WHERE title LIKE search");
-
         String ad_ID = req.getParameter("ad-ID");
         Long adLong = Long.valueOf(ad_ID);
         Ad ad = DaoFactory.getAdsDao().selectAd(adLong);
