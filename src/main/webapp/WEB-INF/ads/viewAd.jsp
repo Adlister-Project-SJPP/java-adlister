@@ -12,11 +12,11 @@
 <div class="container">
 
         <div class="col-md-12">
-            <h1>${singleAd.title}</h1>
+            <h1>${ad.title}</h1>
         </div>
 
         <div class="col-md-6">
-            <p>${singleAd.description}</p>
+            <p>${ad.description}</p>
         </div>
     
 

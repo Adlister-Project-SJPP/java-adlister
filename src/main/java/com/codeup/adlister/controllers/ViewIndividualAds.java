@@ -16,9 +16,12 @@ import java.util.List;
 @WebServlet(name = "ViewIndividualAds", urlPatterns = "/ads/viewAd")
 public class ViewIndividualAds extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long singleAd = Long.parseLong(request.getParameter("singularAd"));
-        Ad singularAd = DaoFactory.getAdsDao().selectAd(singleAd);
-        request.setAttribute("singularAd", singularAd);
+        Ad currentAd = (Ad) request.getSession().getAttribute("ad");
+        request.setAttribute("currentAd", currentAd);
         request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }

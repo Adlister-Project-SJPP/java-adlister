@@ -15,8 +15,12 @@
 
     <c:forEach var="ad" items="${ads}">
         <div id="ad-title" class="col-md-6">
-            <a href="/ads/viewAd"> <h2>${ad.title}</h2></a>
+            <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+            <form action="/ads" method="POST">
+                <input name="ad-ID" id="ad-ID" type="hidden" value="${ad.id}">
+                <input type="submit" class="btn btn-primary" value="View Ad">
+            </form>
         </div>
     </c:forEach>
 
