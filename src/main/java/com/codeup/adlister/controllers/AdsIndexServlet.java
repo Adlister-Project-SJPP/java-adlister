@@ -31,6 +31,6 @@ public class AdsIndexServlet extends HttpServlet {
         if(search != ""){
             req.setAttribute("ads", DaoFactory.getAdsDao());
         }
-        ResultSet rs = Statement.executeQuery("SELECT title FROM ads WHERE title ")
+        ResultSet rs = Statement.executeQuery("SELECT title FROM ads WHERE title LIKE search");
     }
 }
