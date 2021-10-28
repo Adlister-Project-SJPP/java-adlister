@@ -13,6 +13,7 @@ import java.io.IOException;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        String search = request.getParameter("search-input");
 
         if (request.getSession().getAttribute("user") != null) {
             request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear

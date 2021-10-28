@@ -11,6 +11,7 @@
 
     <div class="container">
         <h1>Please Log In</h1>
+<%--        added name tag for reference in the validation javascript logic--%>
         <form name="login" action="/login" method="POST" onsubmit="return validateLogin()">
             <div class="form-group">
                 <label for="username">Username</label>
