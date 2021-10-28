@@ -16,6 +16,14 @@ import java.util.List;
 @WebServlet(name = "ViewIndividualAds", urlPatterns = "/ads/viewAd")
 public class ViewIndividualAds extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (request.getSession().getAttribute("user") != null) {
+            request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
+            Ad currentAd = (Ad) request.getSession().getAttribute("ad");
+            request.setAttribute("currentAd", currentAd);
+            request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
+        }
+
         Ad currentAd = (Ad) request.getSession().getAttribute("ad");
         request.setAttribute("currentAd", currentAd);
         request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
