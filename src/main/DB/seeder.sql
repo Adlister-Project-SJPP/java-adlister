@@ -1,4 +1,4 @@
-USE pet_lister;
+USE pet_lister_db;
 
 INSERT INTO users(username,email, password) VALUES
         ('johnnyboy','johnnyB@gmail.com','letmein'),
@@ -12,5 +12,5 @@ INSERT INTO ads(title, description, user_id,date) VALUES
 # INSERT INTO pet_type(dog, cat, reptile, bird, fish, ads_id) VALUES
 # ('L')
 
-
+SELECT * FROM ads;
 

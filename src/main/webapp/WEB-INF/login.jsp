@@ -22,6 +22,14 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
+        <%--added this choose to be able to display our failed attempt functionality for the user when a form fails to submit--%>
+        <c:choose>
+            <c:when test="${failedAttempt}">
+                <a href="/register"> <%--this anchor tag will redirect the user to the correct page, which in this case, is the register page because the input does not match a user--%>
+                    User does not exist. Click to register.
+                </a>
+            </c:when>
+        </c:choose>
     </div>
     <script src="/js/validation.js"></script>
 </body>

@@ -1,8 +1,11 @@
-CREATE DATABASE pet_lister;
+DROP DATABASE IF EXISTS pet_lister;
 
-USE pet_lister;
+CREATE DATABASE pet_lister_db;
+
+USE pet_lister_db;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS ads;
 
 CREATE TABLE users(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -10,7 +13,7 @@ CREATE TABLE users(
     email VARCHAR(60) NOT NULL,
     password VARCHAR(60) NOT NULL
 );
-DROP TABLE IF EXISTS ads;
+
 
 CREATE TABLE ads(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -19,4 +22,4 @@ CREATE TABLE ads(
     date DATE,
     user_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
-);
+

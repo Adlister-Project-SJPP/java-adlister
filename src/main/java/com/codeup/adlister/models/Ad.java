@@ -1,10 +1,13 @@
 package com.codeup.adlister.models;
 
+import java.sql.Date;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+    private Date date;
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
@@ -13,11 +16,16 @@ public class Ad {
         this.description = description;
     }
 
+    // added constructor to generate date data and this constructor targets userId (actually using this constructor)
     public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
         this.description = description;
+        java.util.Date date = new java.util.Date(); // instantiated methods
+        java.sql.Date sqlDate = new Date(date.getTime()); // instantiated methods
+        this.date = sqlDate; // added this to get the date information
     }
+
 
     public long getId() {
         return id;
@@ -45,6 +53,14 @@ public class Ad {
 
     public String getDescription() {
         return description;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setDescription(String description) {
