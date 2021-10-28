@@ -1,8 +1,12 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+<<<<<<< HEAD
 import com.codeup.adlister.dao.MySQLAdsDao;
 import com.mysql.cj.xdevapi.Statement;
+=======
+import com.codeup.adlister.models.Ad;
+>>>>>>> main
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,11 +30,19 @@ public class AdsIndexServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
         super.doPost(req, resp);
         String search = req.getParameter("searchTitle");
         if(search != ""){
             req.setAttribute("ads", DaoFactory.getAdsDao());
         }
         ResultSet rs = Statement.executeQuery("SELECT title FROM ads WHERE title LIKE search");
+=======
+        String ad_ID = req.getParameter("ad-ID");
+        Long adLong = Long.valueOf(ad_ID);
+        Ad ad = DaoFactory.getAdsDao().selectAd(adLong);
+        req.getSession().setAttribute("ad", ad);
+        resp.sendRedirect("/ads/viewAd");
+>>>>>>> main
     }
 }
