@@ -12,14 +12,14 @@
 
 <div class="container">
 <h3>Search ad by title</h3>
-    <form action="POST" name="searchAd">
+    <form action="/ads" name="searchAd">
         <input type="text" name="searchTitle">
         <input type="submit">
     </form>
     <h1>Here Are all the ads!</h1>
 
     <c:choose>
-        <c:when test="">
+        <c:when test="hasSearched">
             <c:forEach var="ad" items="${ads}">
     <div id="ad-title" class="col-md-6">
         <h2>${ad.title}</h2>
@@ -44,11 +44,7 @@
     </c:forEach>
     </c:otherwise>
     </c:choose>
-=======
 
-
-
->>>>>>> main
 </div>
 
 <script>
