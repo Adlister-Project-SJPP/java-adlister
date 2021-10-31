@@ -16,4 +16,7 @@ public interface Ads {
     Object userAds(long id);
 
     void updateAd(Ad ad);
+
+    void deleteAd(long id);
+
 }
