@@ -20,20 +20,21 @@ import java.sql.ResultSet;
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        String search = request.getParameter("searchTitle");
-            if (request.getSession().getAttribute("user") != null) {
-                request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
-                request.setAttribute("hasSearched", true);
-                request.setAttribute("ads", DaoFactory.getAdsDao().searchAd(search));
-                request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
-            }
-
-        if(search != null){
-            request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request,response);
+        if (request.getSession().getAttribute("user") != null) {
+            request.setAttribute("isLogin", true);//this attribute will decide whether or not the logout and profile will appear
         }
-        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
+        // If we have  search term, filter based on that, otherwise return all results
+        String search = request.getParameter("searchTitle");
+        if (search != null) {
+            request.setAttribute("ads", DaoFactory.getAdsDao().searchAd(search));
+        }
+        else {
+            request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        }
+
+        // Redirect to ads page
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 
     @Override

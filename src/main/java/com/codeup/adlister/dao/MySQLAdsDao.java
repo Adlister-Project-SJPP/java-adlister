@@ -84,14 +84,14 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
-    public Ad searchAd(String ad) {
+    @Override
+    public List<Ad> searchAd(String ad) {
         String query = "SELECT * FROM ads WHERE title LIKE ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, ad);
+            statement.setString(1,"%"+ ad + "%");
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            return extractAd(resultSet);
+            return createAdsFromResults(resultSet);
         }catch (SQLException e){
             throw new RuntimeException("Error finding ad ID", e);
         }
