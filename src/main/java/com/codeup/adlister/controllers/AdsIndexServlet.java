@@ -29,6 +29,7 @@ public class AdsIndexServlet extends HttpServlet {
         Long adLong = Long.valueOf(ad_ID);
         Ad ad = DaoFactory.getAdsDao().selectAd(adLong);
         req.getSession().setAttribute("ad", ad);
+
         resp.sendRedirect("/ads/viewAd");
     }
 }

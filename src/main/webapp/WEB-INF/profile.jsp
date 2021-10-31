@@ -37,6 +37,34 @@
         <div>
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
+            <button class="adEdit">Edit</button>
+            <form method="post" action="/editAd">
+                <ul>
+                    <li>
+                        <input name="title" type="text" value="${ad.title}"/>
+                    </li>
+                    <li>
+                        <input name="description" type="text" value="${ad.description}"/>
+                    </li>
+                    <li>
+                        <input name="adId" type="hidden" value="${ad.id}"/>
+                    </li>
+                    <li>
+                       <button type="submit"> submit</button>
+                    </li>
+                </ul>
+            </form>
+            <form method="post" action="/deleteAd">
+                <ul>
+                    <li>
+                        <input name="adId" type="hidden" value="${ad.id}"/>
+                    </li>
+                    <li>
+                        <button type="submit"> Delete</button>
+                    </li>
+                </ul>
+            </form>
+
         </div>
     </c:forEach>
 
