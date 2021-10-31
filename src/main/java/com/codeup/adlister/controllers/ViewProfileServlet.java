@@ -18,7 +18,9 @@ public class ViewProfileServlet extends HttpServlet {
         if (request.getSession().getAttribute("user") != null) {
             request.setAttribute("isLogin", true);//This attribute will decide whether or not the logout and profile will appear
             User user = (User)request.getSession().getAttribute("user");//Getting the current user information
-            request.setAttribute("ads", DaoFactory.getAdsDao().userAds(user.getId()));
+            User currentUser = DaoFactory.getUsersDao().findById(user.getId());//gets the id from the current user
+            request.setAttribute("user",currentUser);//This set currentUser to user
+            request.setAttribute("ads", DaoFactory.getAdsDao().userAds(user.getId()));//This will get all the ads that current user made
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
 
         }
