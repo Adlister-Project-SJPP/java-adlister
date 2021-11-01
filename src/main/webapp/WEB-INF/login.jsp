@@ -26,7 +26,8 @@
         <c:choose>
             <c:when test="${failedAttempt}">
                 <a href="/register"> <%--this anchor tag will redirect the user to the correct page, which in this case, is the register page because the input does not match a user--%>
-                    User does not exist. Click to register.
+                    <%--edited the way this message is presented to the user--%>
+                    Username and password does not exist. Click here to register.
                 </a>
             </c:when>
         </c:choose>

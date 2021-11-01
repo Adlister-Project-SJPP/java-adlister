@@ -46,7 +46,7 @@ public class MySQLAdsDao implements Ads {
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getTitle());
             stmt.setString(3, ad.getDescription());
-            stmt.setDate(4, (Date) ad.getDate()); // added this for date
+            stmt.setDate(4, ad.getDate()); // added this for date
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -63,6 +63,30 @@ public class MySQLAdsDao implements Ads {
             rs.getString("title"),
             rs.getString("description")
         );
+    }
+
+    // method to sort through ads by date (ascending)
+    public List<Ad> sortAdByDateAsc() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads ORDER BY date ASC");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    // method to sort through ads by date (descending)
+    public List<Ad> sortAdByDateDesc() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads ORDER BY date DESC");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {

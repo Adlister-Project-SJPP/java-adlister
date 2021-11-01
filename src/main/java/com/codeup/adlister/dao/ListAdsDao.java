@@ -32,6 +32,17 @@ public class ListAdsDao implements Ads {
         return null;
     }
 
+    @Override
+    public List<Ad> sortAdByDateAsc() { // implemented method
+        return null;
+    }
+
+    @Override
+    public List<Ad> sortAdByDateDesc() { // implemented method
+        return null;
+    }
+
+
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
         ads.add(new Ad(

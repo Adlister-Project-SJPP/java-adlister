@@ -11,4 +11,8 @@ public interface Ads {
     Long insert(Ad ad);
 
     Ad selectAd(Long ad);
+
+    List<Ad> sortAdByDateAsc();
+
+    List<Ad> sortAdByDateDesc();
 }
