@@ -10,9 +10,8 @@ public interface Ads {
     List<Ad> all();
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
-
     Ad selectAd(Long ad);
-
+    List<Ad> searchAd(String ad);
     Object userAds(long id);
 
     void updateAd(Ad ad);

@@ -11,10 +11,29 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
+<h3>Search ad by title</h3>
+    <form action="/ads" name="searchAd">
+        <input type="text" name="searchTitle">
+        <input type="submit">
+    </form>
     <h1>Here Are all the ads!</h1>
 
+    <c:choose>
+        <c:when test="hasSearched">
+            <c:forEach var="ad" items="${ads}">
+    <div id="ad-title" class="col-md-6">
+        <h2>${ad.title}</h2>
+        <p>${ad.description}</p>
+        <form action="/ads" method="POST">
+            <input name="ad-ID" id="adID" type="hidden" value="${ad.id}">
+            <input type="submit" class="btn btn-primary" value="View Ad">
+        </form>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
     <c:forEach var="ad" items="${ads}">
         <div id="ad-title" class="col-md-6">
+
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
             <form action="/ads" method="POST">
@@ -23,8 +42,8 @@
             </form>
         </div>
     </c:forEach>
-
-
+    </c:otherwise>
+    </c:choose>
 
 </div>
 
