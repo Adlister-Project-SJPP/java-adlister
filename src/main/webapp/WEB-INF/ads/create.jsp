@@ -4,15 +4,17 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Create a new Ad" />
     </jsp:include>
+    <script src="/js/validation2.js"></script>
 </head>
 <body>
 
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
+<div class="container">
         <h1>Create a new Ad</h1>
-<%--        added name tag to form and a onsubmit to run the validation javascript--%>
-        <form name="create" action="/ads/create" method="post" onsubmit="return validateCreate()">
+
+        <form name="create" action="/ads/create" method="post" onsubmit="return validateCreate2()">
+
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -24,7 +26,6 @@
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
-<%--wrote all the validation logic in a js file to keep it object oriented--%>
-    <script src="/js/validation.js"></script>
+
 </body>
 </html>
