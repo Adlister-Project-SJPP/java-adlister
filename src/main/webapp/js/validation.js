@@ -1,3 +1,6 @@
+//
+// WAS HAVING ISSUES SO CREATED A SECOND VALIDATION FILE
+//
 // function validateLogin() {
 //     let x = document.forms["login"]["username"].value;
 //     let y = document.forms["login"]["password"].value;

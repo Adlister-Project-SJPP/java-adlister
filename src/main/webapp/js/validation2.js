@@ -1,3 +1,6 @@
+
+//          FUNCTIONING VALIDATION CODE
+
 function validateLogin2() {
     let x = document.forms["login"]["username"].value;
     let y = document.forms["login"]["password"].value;

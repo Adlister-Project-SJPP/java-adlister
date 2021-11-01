@@ -11,7 +11,7 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
-        <form name="register" action="/register" method="post" onsubmit="return false">
+        <form name="register" action="/register" method="post" onsubmit="return validateRegister2()">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
@@ -28,7 +28,7 @@
                 <label for="confirm_password">Confirm Password</label>
                 <input id="confirm_password" name="confirm_password" class="form-control" type="password">
             </div>
-            <input id="button" type="submit" onclick="validateRegister2()" class="btn btn-primary btn-block">
+            <input id="button" type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
 
