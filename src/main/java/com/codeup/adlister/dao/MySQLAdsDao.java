@@ -124,7 +124,7 @@ public class MySQLAdsDao implements Ads {
     }
     @Override
     public Ad selectAd(Long ad) {
-        String query = "SELECT * FROM ads WHERE title  = ? LIMIT 1";
+        String query = "SELECT * FROM ads WHERE id  = ? LIMIT 1";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, ad);
