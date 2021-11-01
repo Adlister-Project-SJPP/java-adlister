@@ -47,7 +47,7 @@ function removePassword(hasPassword, hasConfirmPassword) {
         if (hasPassword = true) {
             let s = document.getElementById("password");
             s.value = "";
-        }else if (hasConfirmPassword = true) {
+        }if (hasConfirmPassword = true) {
             let c = document.getElementById("confirm_password");
             c.value = "";
         }
