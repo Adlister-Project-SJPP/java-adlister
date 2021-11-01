@@ -1,5 +1,5 @@
 
-//          FUNCTIONING VALIDATION CODE
+//          FUNCTIONING VALIDATION CODE     //
 
 function validateLogin2() {
     let x = document.forms["login"]["username"].value;
@@ -47,7 +47,7 @@ function removePassword(hasPassword, hasConfirmPassword) {
         if (hasPassword = true) {
             let s = document.getElementById("password");
             s.value = "";
-        }else if (hasConfirmPassword = true) {
+        }if (hasConfirmPassword = true) {
             let c = document.getElementById("confirm_password");
             c.value = "";
         }
