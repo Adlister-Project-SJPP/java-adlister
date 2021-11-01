@@ -26,7 +26,7 @@ function validateRegister2(){
         removePassword(true, true);
         return true;
     }if(e == ""){
-        alert("Please enter your email address 123");
+        alert("Please enter your email address");
         removePassword(true, true);
         return false;
     }if(p == ""){

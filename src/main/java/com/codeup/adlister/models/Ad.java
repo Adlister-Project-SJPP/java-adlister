@@ -16,16 +16,15 @@ public class Ad {
         this.description = description;
     }
 
-    // added constructor to generate date data and this constructor targets userId (actually using this constructor)
+    // added constructor to generate date data and this constructor targets userId as compared to the other constructor (actually using this constructor)
     public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
         this.description = description;
-        java.util.Date date = new java.util.Date(); // instantiated methods
-        java.sql.Date sqlDate = new Date(date.getTime()); // instantiated methods
-        this.date = sqlDate; // added this to get the date information
+        java.util.Date date = new java.util.Date(); // instantiated methods and creating a new object?
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        this.date = sqlDate; // added this to be able to add new ad to ad lister
     }
-
 
     public long getId() {
         return id;
