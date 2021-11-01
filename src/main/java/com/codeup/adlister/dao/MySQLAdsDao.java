@@ -131,6 +131,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
     @Override
+//    method for the query selector of the searched value for ads
     public List<Ad> searchAd(String ad) {
         String query = "SELECT * FROM ads WHERE title LIKE ?";
         try {
@@ -139,7 +140,7 @@ public class MySQLAdsDao implements Ads {
             ResultSet resultSet = statement.executeQuery();
             return createAdsFromResults(resultSet);
         }catch (SQLException e){
-            throw new RuntimeException("Error finding ad ID", e);
+            throw new RuntimeException("Error finding the searched name", e);
         }
     }
     @Override

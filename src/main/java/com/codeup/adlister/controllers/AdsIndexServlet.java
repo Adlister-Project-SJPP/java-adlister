@@ -40,10 +40,12 @@ public class AdsIndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String getDate = request.getParameter("ads");
 
-        request.getSession().getAttribute("ads");
-        String getSelectValue = request.getParameter("date");
+        String ad_ID = req.getParameter("ad-ID");
+        Long adLong = Long.valueOf(ad_ID);
+        Ad ad = DaoFactory.getAdsDao().selectAd(adLong);
+        req.getSession().setAttribute("ad", ad);
+
 
         if(request.getParameter("sort-btn") != null) {
             if (getSelectValue.equals("newestToOld")) {
