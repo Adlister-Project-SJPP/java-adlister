@@ -23,11 +23,12 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
-        <%--added this choose to be able to display our failed attempt functionality for the user when a form fails to submit--%>
+        <%--added this choose to be able to display our failed attempt functionality for the user when a form fails to submit (27-34) (**)--%>
         <c:choose>
-            <c:when test="${failedAttempt}">
+            <c:when test="${failedAttempt}"> <%--the c:when is like the if in an if else statement; if failedAttempt is true, the a href will appear which will redirect the user to the register page so that they can create a user in the database (**)--%>
                 <a href="/register"> <%--this anchor tag will redirect the user to the correct page, which in this case, is the register page because the input does not match a user--%>
-                    User does not exist. Click to register.
+                    <%--edited the way this message is presented to the user--%>
+                    Username or password does not exist. Click here to register.
                 </a>
             </c:when>
         </c:choose>

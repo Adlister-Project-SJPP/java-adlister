@@ -2,10 +2,6 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,23 +24,23 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> all() {
-        PreparedStatement stmt = null;
+        PreparedStatement statement = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads");
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
+            statement = connection.prepareStatement("SELECT * FROM ads");
+            ResultSet resultSet = statement.executeQuery();
+            return createAdsFromResults(resultSet);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
 
     public List<Ad> userAds(long id) {
-        PreparedStatement stmt = null;
+        PreparedStatement statement = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id = ?");
-            stmt.setLong(1,id);
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
+            statement = connection.prepareStatement("SELECT * FROM ads WHERE user_id = ?");
+            statement.setLong(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            return createAdsFromResults(resultSet);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
@@ -54,11 +50,11 @@ public class MySQLAdsDao implements Ads {
     public void updateAd(Ad ad) {
         String query = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
         try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, ad.getTitle());
-            stmt.setString(2, ad.getDescription());
-            stmt.setLong(3,  ad.getId());
-            stmt.executeUpdate();
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, ad.getTitle());
+            statement.setString(2, ad.getDescription());
+            statement.setLong(3,  ad.getId());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error updating ad", e);
         }
@@ -68,9 +64,9 @@ public class MySQLAdsDao implements Ads {
     public void deleteAd(long id) {
         String query = "DELETE  FROM ads WHERE id = ?";
         try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1,  id);
-            stmt.executeUpdate();
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1,  id);
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error delete ad", e);
         }
@@ -80,33 +76,57 @@ public class MySQLAdsDao implements Ads {
     public Long insert(Ad ad) {
         try {
             String insertQuery = "INSERT INTO ads(user_id, title, description, date) VALUES (?, ?, ?, ?)"; // added date to insert query
-            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getDescription());
-            stmt.setDate(4, (Date) ad.getDate()); // added this for date
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
+            PreparedStatement statement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(1, ad.getUserId());
+            statement.setString(2, ad.getTitle());
+            statement.setString(3, ad.getDescription());
+            statement.setDate(4, ad.getDate()); // added this for date
+            statement.executeUpdate();
+            ResultSet resultSet = statement.getGeneratedKeys();
+            resultSet.next();
+            return resultSet.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
 
-    private Ad extractAd(ResultSet rs) throws SQLException {
+    private Ad extractAd(ResultSet resultSet) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+            resultSet.getLong("id"),
+            resultSet.getLong("user_id"),
+            resultSet.getString("title"),
+            resultSet.getString("description")
         );
     }
 
-    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
+    // method to sort through ads by date (ascending)
+    public List<Ad> sortAdByDateAsc() {
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement("SELECT * FROM ads ORDER BY date ASC");
+            ResultSet resultSet = statement.executeQuery();
+            return createAdsFromResults(resultSet);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    // method to sort through ads by date (descending)
+    public List<Ad> sortAdByDateDesc() {
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement("SELECT * FROM ads ORDER BY date DESC");
+            ResultSet resultSet = statement.executeQuery();
+            return createAdsFromResults(resultSet);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    private List<Ad> createAdsFromResults(ResultSet resultSet) throws SQLException {
         List<Ad> ads = new ArrayList<>();
-        while (rs.next()) {
-            ads.add(extractAd(rs));
+        while (resultSet.next()) {
+            ads.add(extractAd(resultSet));
         }
         return ads;
     }

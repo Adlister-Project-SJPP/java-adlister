@@ -13,12 +13,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
 <div class="container">
     <h1>Welcome, ${user.username}!</h1>
-
     <button class="edit btn btn-info" id="edit">Edit</button>
-
     <form class="hidden" action="/profile" id="editForm" method="post">
         <ul>
             <li>
@@ -64,10 +61,8 @@
                     </li>
                 </ul>
             </form>
-
         </div>
     </c:forEach>
-
 </div>
 <script src="/js/JQuery.js"></script>
 <script src="/js/user.js"></script>

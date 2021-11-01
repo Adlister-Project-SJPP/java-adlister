@@ -8,20 +8,13 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
 <div class="container">
-
         <div class="col-md-12">
             <h1>${ad.title}</h1>
         </div>
-
         <div class="col-md-6">
             <p>${ad.description}</p>
         </div>
-    
-
-
 </div>
-
 </body>
 </html>
