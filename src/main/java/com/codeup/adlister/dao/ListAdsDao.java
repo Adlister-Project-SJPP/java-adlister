@@ -1,11 +1,10 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListAdsDao implements Ads {
+public abstract class ListAdsDao implements Ads {
     private List<Ad> ads;
 
     public List<Ad> all() {
