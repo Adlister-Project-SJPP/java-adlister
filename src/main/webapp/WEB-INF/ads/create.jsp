@@ -11,7 +11,7 @@
 
     <div class="container">
         <h1>Create a new Ad</h1>
-        <form name="create" action="/ads/create" method="post" onsubmit="return validateCreate()">
+        <form name="create" action="/ads/create" method="post" onsubmit="return false">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -20,9 +20,9 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
-            <input type="submit" class="btn btn-block btn-primary">
+            <input type="submit" onclick="validateCreate2()" class="btn btn-block btn-primary">
         </form>
     </div>
-    <script src="/js/validation.js"></script>
+    <script src="/js/validation2.js"></script>
 </body>
 </html>

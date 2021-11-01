@@ -11,7 +11,7 @@
 
     <div class="container">
         <h1>Please Log In</h1>
-        <form name="login" action="/login" method="POST" onsubmit="return validateLogin()">
+        <form name="login" action="/login" method="POST" onsubmit="return false">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
@@ -20,7 +20,7 @@
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            <input type="submit" onclick="validateLogin2()" class="btn btn-primary btn-block">
         </form>
         <%--added this choose to be able to display our failed attempt functionality for the user when a form fails to submit--%>
         <c:choose>
@@ -31,6 +31,6 @@
             </c:when>
         </c:choose>
     </div>
-    <script src="/js/validation.js"></script>
+    <script src="/js/validation2.js"></script>
 </body>
 </html>
