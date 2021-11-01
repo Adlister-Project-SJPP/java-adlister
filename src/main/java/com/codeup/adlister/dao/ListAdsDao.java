@@ -1,11 +1,10 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListAdsDao implements Ads {
+public abstract class ListAdsDao implements Ads {
     private List<Ad> ads;
 
     public List<Ad> all() {
@@ -31,6 +30,17 @@ public class ListAdsDao implements Ads {
     public Ad selectAd(Long ad) {
         return null;
     }
+
+    @Override
+    public List<Ad> sortAdByDateAsc() { // implemented method
+        return null;
+    }
+
+    @Override
+    public List<Ad> sortAdByDateDesc() { // implemented method
+        return null;
+    }
+
 
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();

@@ -12,7 +12,9 @@
 
 <div class="container">
         <h1>Create a new Ad</h1>
+
         <form name="create" action="/ads/create" method="post" onsubmit="return validateCreate2()">
+
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
@@ -24,5 +26,6 @@
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
+
 </body>
 </html>
