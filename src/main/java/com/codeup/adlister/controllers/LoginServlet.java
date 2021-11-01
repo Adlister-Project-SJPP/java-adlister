@@ -3,7 +3,6 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +12,16 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
-    private int counter = 0; // added this counter variable outside of the doGet method
+    private int counter = 0; // added this counter variable outside of the doGet method (**)
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
         }
-        // line 23-26
-        counter += 1;
+
+        counter += 1; // this is saying we want to add 1 to the counter (**)
         if (counter > 1) {
-            request.setAttribute("failedAttempt", true);
+            request.setAttribute("failedAttempt", true); // failedAttempt is going to start off false but if the counter exceeds one, it will be true and if it's true the message will appear on the webpage (**)
         }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 //        request.setAttribute("failedAttempt", true); // the failedAttempt did not display when we placed this code

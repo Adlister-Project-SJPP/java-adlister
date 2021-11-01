@@ -16,13 +16,14 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
 <div class="container">
     <h1>Welcome, ${user.username}!</h1>
+
 <%--this is the username edit form--%>
     <button class="edit btn btn-info" id="edit">Edit</button>
 <%--added name and onsubmit functionality to catch empties--%>
     <form name="edit" class="hidden" action="/profile" id="editForm" method="post" onsubmit="return validateEdit()">
+
         <ul>
             <li>
                 <label for="username">Username</label>
@@ -70,10 +71,8 @@
                     </li>
                 </ul>
             </form>
-
         </div>
     </c:forEach>
-
 </div>
 <script src="/js/JQuery.js"></script>
 <script src="/js/user.js"></script>
