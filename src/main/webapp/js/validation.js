@@ -28,13 +28,14 @@ function validateRegister(){
         return false;
     }
 }
-function validateCreate(){
+function validateCreate() {
     let t = document.forms["create"]["title"].value;
     let d = document.forms["create"]["description"].value;
-    if(t == ""){
+    if (t == "") {
         alert("Please fill out your title")
         return false;
-    }if(d == ""){
+    }
+    if (d == "") {
         alert("Please describe your ad")
         return false;
     }

@@ -40,8 +40,6 @@ public class AdsIndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        super.doPost(req, resp);
-
         String ad_ID = req.getParameter("ad-ID");
         Long adLong = Long.valueOf(ad_ID);
         Ad ad = DaoFactory.getAdsDao().selectAd(adLong);
